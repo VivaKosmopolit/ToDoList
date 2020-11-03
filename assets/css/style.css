@@ -165,6 +165,16 @@ main {
     line-height: 90px;
 }*/
 
+.task-main {
+    max-width: 450px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.task-preload-text {
+    overflow: hidden;
+}
+
 .check-wrapper {
     margin-right: 13px;
     display: flex;
@@ -248,7 +258,7 @@ main {
 .add-task-modal {
     display: none;
     min-width: 1120px;
-    min-height: 490px;
+    height: 490px;
     background-color: #F2F2F2;
     position: absolute;
     top: 50%;
@@ -270,21 +280,33 @@ main {
     padding: 0 40px;
 }
 
-form input {
-    width: 100%;
-    height: 40px;
-    border-radius: 10px;
-    outline: none;
-    border: 0;
-}
-
 form {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 40px) 125px;
     grid-column-gap: 30px;
     grid-row-gap: 35px;
-    min-height: 400px;
+    position: relative;
+}
+
+form:after {
+    content: '';
+    width: 100%;
+    height: 1px;
+    left: 0;
+    bottom: -40px;
+    position: absolute;
+    background-color: #E0E0E0;
+}
+
+form input {
+    width: 100%;
+    height: 40px;
+    padding-left: 10px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    outline: none;
+    border: 0;
 }
 
 form div {
@@ -295,8 +317,8 @@ form div label {
     position: absolute;
     top: -20px;
     left: 0;
+    color: rgba(79, 79, 79, 1);
     font-size: 13px;
-    font-weight: 300;
 }
 
 .form-grid-1 { grid-area: 1 / 1 / 2 / 4; }
@@ -305,21 +327,59 @@ form div label {
 .form-grid-4 { grid-area: 2 / 3 / 3 / 4; }
 .form-grid-5 { grid-area: 3 / 1 / 4 / 4; }
 
-textarea {
+#tasktext {
     width: 100%;
     min-height: 125px;
-    padding: 5px 10px;
+    padding: 8px 10px;
     outline: none;
     resize: none;
-    font-size: 1.125rem;
+    font-size: 1.4rem;
+    overflow-y: scroll;
+}
+
+#tasktext::-webkit-scrollbar {
+    width: 4px;
+}
+
+#tasktext::-webkit-scrollbar-thumb {
+    background: #E0E0E0;
+    border-radius: 5px;
+}
+
+#tasktext, .custom-select {
+    border-radius: 10px;
+    border: 0;
 }
 
 .custom-select {
+    font-size: 1.1rem;
     width: 100%;
     height: 40px;
+    padding-left: 5px;
+    padding-right: 20px;
 }
 
-textarea, .custom-select {
-    border-radius: 10px;
-    border: 0;
+.btn-wrapper {
+    position: absolute;
+    right: 40px;
+    bottom: 20px;
+}
+
+.btn {
+    padding: 5px 10px;
+    background-color: unset;
+    cursor: pointer;
+    position: relative;
+    outline: 0;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+.btn_undo {
+    border: none;
+    margin-right: 20px;
+}
+
+.btn_create {
+    border: 1px solid #828282;
 }

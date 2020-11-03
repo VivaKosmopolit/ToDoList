@@ -13,37 +13,37 @@
     <div class="overlay"></div>
     <div class="add-task-modal">
         <h2>Создание задачи</h2>
-        <form>
+        <form id="form" onsubmit="checkForm();return false">
             <div class="form-grid-1">
                 <label for="task-name">Название</label>
-                <input id="task-name" type="text">
+                <input id="task-name" type="text" required>
             </div>
             <div class="form-grid-2">
                 <label for="datetime">Дедлайн</label>
-                <input type="datetime-local" id="datetime" name="trip-start">
+                <input type="datetime-local" id="datetime" name="deadline" required>
             </div>
             <div class="form-grid-3">
                 <label for="priority2">Приоритет</label>
-                <select name="priority" id="priority" class="custom-select">
+                <select name="priority" id="priority" class="custom-select" required>
                     <option value="Высокий">Высокий</option>
                     <option value="Средний">Средний</option>
                     <option value="Низкий">Низкий</option>
                 </select>
             </div>
             <div class="form-grid-4">
-                <label for="priority">Приоритет</label>
-                <select name="priority" id="priority2" class="custom-select">
-                    <option value="Высокий">Высокий</option>
-                    <option value="Средний">Средний</option>
-                    <option value="Низкий">Низкий</option>
+                <label for="priority2">Метка</label>
+                <select name="priority2" id="priority2" class="custom-select">
                 </select>
             </div>
             <div class="form-grid-5">
                 <label for="tasktext">Описание</label>
                 <textarea name="task-text" id="tasktext" class="form-grid-5"></textarea>
             </div>
-            <button type="button" onclick="createTask()">Создать</button>
         </form>
+        <div class="btn-wrapper">
+            <button form="form" type="button" class="btn btn_undo">Отменить</button>
+            <button form="form" type="submit" class="btn btn_create">Создать</button>
+        </div>
     </div>
     <div class="container">
         <header>

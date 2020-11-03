@@ -22,6 +22,15 @@ function clearInputs() {
 const addModal = document.querySelector('.add-task-modal');
 const overlay = document.querySelector('.overlay');
 
+
+// Deb
+const closeBtn = document.querySelectorAll('.btn_undo');
+closeBtn.forEach((e) => {
+   e.addEventListener('click', () => {
+       closeModal();
+   })
+});
+
 function closeModal() {
     overlay.style.display = 'none';
     addModal.style.display = 'none';
@@ -36,6 +45,14 @@ function taskModal() {
     overlay.style.display = 'block';
  }
 
+function checkForm() {
+    let form = document.getElementById('form');
+    form.addEventListener('submit', (e) => {
+        if (form.checkValidity()) {
+            createTask();
+        }
+    });
+}
 
 function createTask() {
     const task = document.querySelector('.task-list');
@@ -43,16 +60,16 @@ function createTask() {
     const taskDate = document.getElementById('datetime').value;
     const option = document.getElementById('priority').value;
     const text = document.getElementById('tasktext').value;
-
     function checkOption () {
         const priority = document.querySelector('.priority');
         if (option === 'Высокий') {
-            priority.classList.add('high-lvl');
+            return priority.classList.add('high-lvl');
         }
+
     }
 
     task.innerHTML +=
-       `
+        `
         <div class="task">
             <ul>
                 <li>
@@ -91,3 +108,4 @@ function createTask() {
     checkOption();
     closeModal();
 }
+
